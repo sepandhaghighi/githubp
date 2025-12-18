@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>githubp.com – Redirecting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Automatic redirect from GitHub URLs to GitHub Pages." />
+  <meta property="og:title" content="githubp.com Redirect" />
+  <meta property="og:description" content="Automatic redirect from GitHub URLs to GitHub Pages." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="githubp.com Redirect" />
+  <meta name="twitter:description" content="Automatic redirect from GitHub URLs to GitHub Pages." />
+  <meta name="robots" content="noindex, follow" />
+</head>
+<body>
+<script>
+  const githubNamePattern = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
+
+  const pathSegments = location.pathname
+    .split("/")
+    .filter(segment => segment.length > 0);
+
+  const username =
+    pathSegments.length >= 1 ? pathSegments[0] : null;
+
+  const repositoryName =
+    pathSegments.length >= 2 && githubNamePattern.test(pathSegments[1])
+      ? pathSegments[1]
+      : null;
+
+  if (!username || !githubNamePattern.test(username)) {
+    alert("Invalid GitHub path");
+    location.replace("/");
+  } else {
+    const redirectUrl = repositoryName
+      ? `https://${username}.github.io/${repositoryName}`
+      : `https://${username}.github.io/`;
+
+    location.replace(redirectUrl);
+  }
+</script>
+</body>
+</html>
