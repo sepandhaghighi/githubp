@@ -33,9 +33,10 @@ function parseGithubPath(input) {
 
 function handleIndexPage() {
   const input = document.getElementById("pathInput");
-  if (!input) return;
+  const button = document.getElementById("button");
+  if (!input || !button) return;
 
-  window.redirectToPages = () => {
+  button.addEventListener("click", () => {
     const value = input.value.trim();
     const { username, repositoryName } = parseGithubPath(value);
 
@@ -45,7 +46,7 @@ function handleIndexPage() {
     }
 
     redirectToGithubPages(username, repositoryName);
-  };
+  });
 }
 
 
@@ -60,7 +61,3 @@ function handle404Page() {
   redirectToGithubPages(username, repositoryName);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  handleIndexPage();
-  handle404Page();
-});
