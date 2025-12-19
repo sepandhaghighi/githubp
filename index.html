@@ -79,27 +79,10 @@
     </div>
 
     <div class="form">
-      <input id="usernameInput" placeholder="GitHub username" />
-      <button onclick="redirectToPages()">Go</button>
+      <input id="pathInput" placeholder="GitHub path" />
+      <button>Go</button>
     </div>
   </div>
-
-  <script>
-    const githubNamePattern = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,39}(?<!-)$/;
-
-    function redirectToPages() {
-      const username = document
-        .getElementById("usernameInput")
-        .value
-        .trim();
-
-      if (!githubNamePattern.test(username)) {
-        alert("Invalid GitHub username");
-        return;
-      }
-
-      location.href = `https://${username}.github.io/`;
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
