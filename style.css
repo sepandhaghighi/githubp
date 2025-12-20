@@ -35,6 +35,9 @@ p {
     display: flex;
     gap: 0.5rem;
 }
+.green {
+    color: #62B039;
+}
 input {
     flex: 1;
     padding: 0.7rem;
