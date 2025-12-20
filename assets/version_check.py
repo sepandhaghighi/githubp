@@ -7,7 +7,7 @@ import codecs
 Failed = 0
 VERSION = "0.1"
 
-INDEX_ITEMS = ['<div class="version">Version {0}</div>']
+INDEX_ITEMS = ['<p>Version {0}</p>']
 CHANGELOG_ITEMS = [
     "## [{0}]",
     "https://github.com/sepandhaghighi/githubp/compare/v{0}...main",
