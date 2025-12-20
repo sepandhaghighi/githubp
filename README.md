@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="https://github.com/sepandhaghighi/githubp/raw/readme/assets/logo.png" alt="GitHubP Logo" width="300">
     <h1>GitHubP: One-Letter Shortcut from GitHub to GitHub Pages</h1>
     <br/>
     <a href="https://githubp.com"><img src="https://img.shields.io/badge/githubp.com-green.svg"></a>
