@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/sepandhaghighi/githubp/raw/readme/assets/logo.png" alt="GitHubP Logo" width="300">
+    <img src="https://github.com/sepandhaghighi/githubp/raw/main/assets/logo.png" alt="GitHubP Logo" width="300">
     <h1>GitHubP: One-Letter Shortcut from GitHub to GitHub Pages</h1>
     <br/>
     <a href="https://githubp.com"><img src="https://img.shields.io/badge/githubp.com-green.svg"></a>
@@ -17,4 +17,4 @@ GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their c
 
 - Open `githubp.com` and enter a GitHub path 
 - Or simply edit any GitHub URL in your browser:
-    - github.com/username → github<span style="color:#62B039;">p</span>.com/username
+    - `github.com/username` → `githubp.com/username`
