@@ -22,6 +22,9 @@ p {
     line-height: 1.5;
     margin-bottom: 1rem;
 }
+#logo {
+    width: 220px;
+}
 .example {
     font-family: monospace;
     background: #f6f8fa;
