@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHubP: One-Letter Shortcut from GitHub to GitHub Pages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their corresponding GitHub Pages.">
+  <meta name="keywords" content="GitHub Pages, GitHub redirect, githubp, github.io">
+  <meta name="author" content="Sepand Haghighi">
+  <meta property="og:title" content="GitHubP: One-Letter Shortcut from GitHub to GitHub Pages">
+  <meta property="og:description" content="GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their corresponding GitHub Pages.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://githubp.com/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GitHubP: One-Letter Shortcut from GitHub to GitHub Pages">
+  <meta name="twitter:description" content="GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their corresponding GitHub Pages.">
+  <meta name="robots" content="index, follow">
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="container">
+    <h1>githubp.com</h1>
+    <p>
+      Redirect GitHub profiles and repositories to GitHub Pages by adding just
+      one letter: <strong>p</strong>.
+    </p>
+
+    <div class="example">
+      https://github.com/username → https://username.github.io
+    </div>
+
+    <div class="form">
+      <input id="pathInput" placeholder="GitHub path" />
+      <button id="button">Go</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    handleIndexPage();
+  </script>
+</body>
+</html>
