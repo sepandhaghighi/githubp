@@ -22,6 +22,9 @@ p {
     line-height: 1.5;
     margin-bottom: 1rem;
 }
+#logo {
+    width: 220px;
+}
 .example {
     font-family: monospace;
     background: #f6f8fa;
@@ -34,6 +37,9 @@ p {
 .form {
     display: flex;
     gap: 0.5rem;
+}
+.green {
+    color: #62B039;
 }
 input {
     flex: 1;
