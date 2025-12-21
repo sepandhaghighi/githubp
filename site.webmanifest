@@ -1,15 +1,17 @@
 {
-  "name": "GitHubP",
+  "name": "GitHubP: One-Letter Shortcut from GitHub to GitHub Pages",
   "short_name": "GitHubP",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
+      "src": "assets/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/web-app-manifest-512x512.png",
+      "src": "assets/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -17,5 +19,6 @@
   ],
   "theme_color": "#62B039",
   "background_color": "#62B039",
-  "display": "standalone"
+  "display": "fullscreen",
+  "orientation": "portrait"
 }
