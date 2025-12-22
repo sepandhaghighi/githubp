@@ -18,3 +18,9 @@ GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their c
 - Open `githubp.com` and enter a GitHub path 
 - Or simply edit any GitHub URL in your browser:
     - `github.com/username` → `githubp.com/username`
+
+## Issues & Bug Reports
+
+Just fill an issue and describe it. We'll check it ASAP! or send an email to [info@github.com](mailto:info@github.com "info@github.com"). 
+
+- Please complete the issue template
