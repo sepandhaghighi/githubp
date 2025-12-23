@@ -21,6 +21,6 @@ GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their c
 
 ## Issues & Bug Reports
 
-Just fill an issue and describe it. We'll check it ASAP! or send an email to [info@github.com](mailto:info@github.com "info@github.com"). 
+Just fill an issue and describe it. We'll check it ASAP! or send an email to [info@githubp.com](mailto:info@githubp.com "info@githubp.com"). 
 
 - Please complete the issue template
