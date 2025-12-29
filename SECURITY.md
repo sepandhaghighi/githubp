@@ -9,6 +9,6 @@
 
 ## Reporting a Vulnerability
 
-Please report security vulnerabilities by email to [me@sepand.tech](mailto:me@sepand.tech "me@sepand.tech").
+Please report security vulnerabilities by email to [info@githubp.com](mailto:info@githubp.com "info@githubp.com").
 
 If the security vulnerability is accepted, a dedicated bugfix release will be issued as soon as possible (depending on the complexity of the fix).
