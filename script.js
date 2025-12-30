@@ -8,7 +8,7 @@ function redirectToGithubPages(username, repositoryName) {
   const targetUrl = repositoryName
     ? `https://${username}.github.io/${repositoryName}`
     : `https://${username}.github.io/`;
-  location.replace(targetUrl);
+  window.location.href = targetUrl;
 }
 
 function parseGithubPath(input) {
