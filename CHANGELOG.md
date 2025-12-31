@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - [Statcounter](https://statcounter.com/) script
+### Changed
+- Back button bug fixed
 ## [0.1] - 2025-12-29
 ### Added
 - First page
