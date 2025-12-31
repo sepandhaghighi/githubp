@@ -15,6 +15,14 @@ GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their c
 
 🌐 **Live:** [https://githubp.com](https://githubp.com)
 
+<table>
+	<tr> 
+		<td align="center">Code Quality</td>
+		<td align="center"><a href="https://www.codefactor.io/repository/github/sepandhaghighi/githubp"><img src="https://www.codefactor.io/repository/github/sepandhaghighi/githubp/badge" alt="CodeFactor"></a></td>
+		<td align="center"><a href="https://app.codacy.com/gh/sepandhaghighi/githubp/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img src="https://app.codacy.com/project/badge/Grade/06628499580b406f93b29badb614f0b5"></a></td>
+	</tr>
+</table>
+
 ## Usage
 
 - Open `githubp.com` and enter a GitHub path 
