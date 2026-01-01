@@ -1,4 +1,4 @@
- body {
+body {
     font-family: system-ui, sans-serif;
     margin: 0;
     padding: 1rem;
@@ -8,23 +8,28 @@
     justify-content: center;
     background: #ffffff;
 }
+
 .container {
     max-width: 420px;
     width: 100%;
     text-align: center;
 }
+
 h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
 }
+
 p {
     color: #444;
     line-height: 1.5;
     margin-bottom: 1rem;
 }
+
 #logo {
     width: 220px;
 }
+
 .example {
     font-family: monospace;
     background: #f6f8fa;
@@ -34,18 +39,22 @@ p {
     margin-bottom: 1.2rem;
     word-break: break-all;
 }
+
 .form {
     display: flex;
     gap: 0.5rem;
 }
+
 .green {
     color: #62B039;
 }
+
 input {
     flex: 1;
     padding: 0.7rem;
     font-size: 1rem;
 }
+
 button {
     padding: 0.7rem 1rem;
     font-size: 1rem;
