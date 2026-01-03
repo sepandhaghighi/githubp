@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - [Statcounter](https://statcounter.com/) script
+- Footer
 ### Changed
 - `README.md` updated
 - Back button bug fixed

@@ -60,3 +60,11 @@ button {
     font-size: 1rem;
     cursor: pointer;
 }
+
+footer {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #777;
+    position:relative;
+}
