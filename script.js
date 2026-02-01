@@ -9,7 +9,7 @@ function isValidGithubName(name) {
 function getTargetURL(username, repositoryName) {
   const targetUrl = repositoryName
     ? `https://${username}.github.io/${repositoryName}`
-    : `https://${username}.github.io/`;
+    : `https://${username}.github.io`;
   return targetUrl;
 }
 
