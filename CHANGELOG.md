@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Recently visited section
 - `renderRecent` function
 - `saveRecent` function
-- `getTargetURL` function
+- `getTargetUrl` function
 ## [0.2] - 2026-01-04
 ### Added
 - [Statcounter](https://statcounter.com/) script
