@@ -6,11 +6,15 @@ function isValidGithubName(name) {
   return GITHUB_NAME_PATTERN.test(name);
 }
 
-function redirectToGithubPages(username, repositoryName) {
+function getTargetURL(username, repositoryName) {
   const targetUrl = repositoryName
     ? `https://${username}.github.io/${repositoryName}`
     : `https://${username}.github.io/`;
-  window.location.href = targetUrl;
+  return targetUrl;
+}
+
+function redirectToGithubPages(url) {
+  window.location.href = url;
 }
 
 function parseGithubPath(input) {
@@ -89,8 +93,9 @@ function handleIndexPage() {
       alert("Invalid GitHub path");
       return;
     }
+    const targetUrl = getTargetURL(username, repositoryName);
     saveRecent(targetUrl);
-    redirectToGithubPages(username, repositoryName);
+    redirectToGithubPages(targetUrl);
   });
 }
 
@@ -102,7 +107,7 @@ function handle404Page() {
     location.replace("/");
     return;
   }
-
-  redirectToGithubPages(username, repositoryName);
+  const targetUrl = getTargetURL(username, repositoryName);
+  redirectToGithubPages(targetUrl);
 }
 
