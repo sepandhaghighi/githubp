@@ -6,7 +6,7 @@ function isValidGithubName(name) {
   return GITHUB_NAME_PATTERN.test(name);
 }
 
-function getTargetURL(username, repositoryName) {
+function getTargetUrl(username, repositoryName) {
   const targetUrl = repositoryName
     ? `https://${username}.github.io/${repositoryName}`
     : `https://${username}.github.io`;
@@ -92,7 +92,7 @@ function handleIndexPage() {
       alert("Invalid GitHub path");
       return;
     }
-    const targetUrl = getTargetURL(username, repositoryName);
+    const targetUrl = getTargetUrl(username, repositoryName);
     saveRecent(targetUrl);
     redirectToGithubPages(targetUrl);
   });
@@ -106,7 +106,7 @@ function handle404Page() {
     location.replace("/");
     return;
   }
-  const targetUrl = getTargetURL(username, repositoryName);
+  const targetUrl = getTargetUrl(username, repositoryName);
   saveRecent(targetUrl);
   redirectToGithubPages(targetUrl);
 }
