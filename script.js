@@ -36,9 +36,8 @@ function parseGithubPath(input) {
   }
 }
 
-function saveRecent(url){
+function saveRecent(url) {
   let recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
-  const idx = recent.findIndex(item => item===url);
   recent = recent.filter(item => !(item===url));
   recent.unshift(url);
   if(recent.length > recentSize) recent = recent.slice(0, recentSize);
