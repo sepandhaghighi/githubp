@@ -108,6 +108,7 @@ function handle404Page() {
     return;
   }
   const targetUrl = getTargetURL(username, repositoryName);
+  saveRecent(targetUrl);
   redirectToGithubPages(targetUrl);
 }
 
