@@ -58,8 +58,7 @@ function renderRecent(){
     spanRemove.className = "recent-remove";
     spanUrl.addEventListener("click", () => {
       location.replace(item);
-    }
-  );
+    });
 
   spanRemove.addEventListener("click", ()=>{
       const userConfirmed = confirm("Are you sure you want to remove this page?");
