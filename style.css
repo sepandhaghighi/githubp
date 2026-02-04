@@ -45,6 +45,60 @@ p {
     gap: 0.5rem;
 }
 
+#recent-list {
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+#recent-list h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#recent-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+#recent-list li {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#recent-list li:last-child {
+    border-bottom: none;
+}
+
+#recent-list li:hover {
+    background: #f2f2f2;
+}
+
+.recent-remove:hover {
+    cursor: pointer;
+}
+
+.recent-url {
+    margin-right: auto;
+    margin-left: 3px;
+}
+
+.recent-url:hover {
+    cursor: pointer;
+}
+
 .green {
     color: #62B039;
 }

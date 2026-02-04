@@ -1,14 +1,20 @@
 const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
+const recentKey = "recentPages";
+const recentSize = 15;
 
 function isValidGithubName(name) {
   return GITHUB_NAME_PATTERN.test(name);
 }
 
-function redirectToGithubPages(username, repositoryName) {
+function getTargetUrl(username, repositoryName) {
   const targetUrl = repositoryName
     ? `https://${username}.github.io/${repositoryName}`
-    : `https://${username}.github.io/`;
-  window.location.href = targetUrl;
+    : `https://${username}.github.io`;
+  return targetUrl;
+}
+
+function redirectToGithubPages(url) {
+  window.location.href = url;
 }
 
 function parseGithubPath(input) {
@@ -30,8 +36,49 @@ function parseGithubPath(input) {
   }
 }
 
+function saveRecent(url) {
+  let recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+  recent = recent.filter(item => !(item===url));
+  recent.unshift(url);
+  if(recent.length > recentSize) recent = recent.slice(0, recentSize);
+  localStorage.setItem(recentKey, JSON.stringify(recent));
+}
+
+function renderRecent(){
+  const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+  const recentItems = document.getElementById("recent-items");
+  recentItems.innerHTML = "";
+  recent.forEach(item=>{
+    const li = document.createElement("li");
+    const spanUrl = document.createElement("span");
+    const spanRemove = document.createElement("span");
+    spanUrl.textContent = item;
+    spanUrl.className = "recent-url";
+    spanRemove.textContent = "🗑️";
+    spanRemove.className = "recent-remove";
+    spanUrl.addEventListener("click", () => {
+      location.replace(item);
+    });
+
+  spanRemove.addEventListener("click", ()=>{
+      const userConfirmed = confirm("Are you sure you want to remove this page?");
+      if (userConfirmed){
+        let newRecent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+        newRecent = newRecent.filter(recentItem => !(recentItem===item));
+        localStorage.setItem(recentKey, JSON.stringify(newRecent));
+        renderRecent();
+      }
+    });
+    li.appendChild(spanRemove);
+    li.appendChild(spanUrl);
+    recentItems.appendChild(li);
+  });
+  document.getElementById("recent-list").style.display = recent.length ? "block" : "none";
+}
+
 
 function handleIndexPage() {
+  renderRecent();
   const input = document.getElementById("pathInput");
   const button = document.getElementById("button");
   if (!input || !button) return;
@@ -44,8 +91,9 @@ function handleIndexPage() {
       alert("Invalid GitHub path");
       return;
     }
-
-    redirectToGithubPages(username, repositoryName);
+    const targetUrl = getTargetUrl(username, repositoryName);
+    saveRecent(targetUrl);
+    redirectToGithubPages(targetUrl);
   });
 }
 
@@ -57,7 +105,8 @@ function handle404Page() {
     location.replace("/");
     return;
   }
-
-  redirectToGithubPages(username, repositoryName);
+  const targetUrl = getTargetUrl(username, repositoryName);
+  saveRecent(targetUrl);
+  redirectToGithubPages(targetUrl);
 }
 
