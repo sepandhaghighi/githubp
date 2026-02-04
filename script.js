@@ -57,7 +57,8 @@ function renderRecent(){
     spanRemove.textContent = "🗑️";
     spanRemove.className = "recent-remove";
     spanUrl.addEventListener("click", () => {
-      location.replace(item);
+      saveRecent(item);
+      redirectToGithubPages(item);
     });
 
   spanRemove.addEventListener("click", ()=>{
