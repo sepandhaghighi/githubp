@@ -88,6 +88,7 @@ p {
 
 .recent-remove:hover {
     cursor: pointer;
+    transform: scale(1.2);
 }
 
 .recent-url {
@@ -97,6 +98,7 @@ p {
 
 .recent-url:hover {
     cursor: pointer;
+    transform: scale(1.02);
 }
 
 .green {
