@@ -17,11 +17,11 @@ function redirectToGithubPages(url) {
   window.location.href = url;
 }
 
-function parseGithubPath(input) {
+function parseGithubPath(path) {
   try {
-    const url = input.startsWith("http")
-      ? new URL(input)
-      : new URL(`https://github.com/${input.replace(/^\/+/, "")}`);
+    const url = path.startsWith("http")
+      ? new URL(path)
+      : new URL(`https://github.com/${path.replace(/^\/+/, "")}`);
 
     const segments = url.pathname.split("/").filter(Boolean);
     return {
@@ -80,12 +80,12 @@ function renderRecent(){
 
 function handleIndexPage() {
   renderRecent();
-  const input = document.getElementById("pathInput");
+  const path = document.getElementById("path");
   const button = document.getElementById("button");
-  if (!input || !button) return;
+  if (!path || !button) return;
 
   button.addEventListener("click", () => {
-    const value = input.value.trim();
+    const value = path.value.trim();
     const { username, repositoryName } = parseGithubPath(value);
 
     if (!username || !isValidGithubName(username)) {
