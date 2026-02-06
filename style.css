@@ -52,8 +52,10 @@ p {
 }
 
 #recent-header {
+    color: #000;
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    font-weight: bolder;
 }
 
 #recent-list ul {
