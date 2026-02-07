@@ -7,7 +7,8 @@
     <a href="https://github.com/sepandhaghighi/githubp"><img src="https://img.shields.io/github/stars/sepandhaghighi/githubp.svg?style=social&label=Stars"></a>
 </div>
 
-> ⚠️ GitHubP is not officially affiliated with, endorsed by, or associated with GitHub, but it is crafted with love for GitHub enthusiasts ❤️
+> [!NOTE]
+> GitHubP is not officially affiliated with, endorsed by, or associated with GitHub, but it is crafted with love for GitHub enthusiasts ❤️
 
 ## Overview
 
