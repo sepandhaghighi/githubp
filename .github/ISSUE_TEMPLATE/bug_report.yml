@@ -85,6 +85,7 @@ body:
       label: GitHubP version
       description: Which version of GitHubP are you using?
       options:
+        - GitHubP 0.3
         - GitHubP 0.2
         - GitHubP 0.1
       default: 0
