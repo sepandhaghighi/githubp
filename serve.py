@@ -6,7 +6,7 @@ import os
 import sys
 
 PORT = 8000
-
+PATH_404 = "404.html"
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -18,9 +18,8 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "text/html")
             self.end_headers()
 
-            path_404 = os.path.join(DIRECTORY, "404.html")
-            if os.path.exists(path_404):
-                with open(path_404, "rb") as f:
+            if os.path.exists(PATH_404):
+                with open(PATH_404, "rb") as f:
                     self.wfile.write(f.read())
             else:
                 self.wfile.write(b"<h1>404 Not Found</h1>")
