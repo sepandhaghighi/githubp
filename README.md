@@ -30,6 +30,22 @@ GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their c
 - Or simply edit any GitHub URL in your browser:
     - `github.com/username` → `githubp.com/username`
 
+## Local Development
+
+To test GitHubP locally, you can use the provided `serve.py` script. It runs a minimal HTTP server using Python's standard library. No external dependencies are required.
+
+Run:
+
+```console
+python serve.py
+```
+
+Then open your browser and visit:
+
+```console
+http://localhost:8000
+```
+
 ## Issues & Bug Reports
 
 Just fill an issue and describe it. We'll check it ASAP! or send an email to [info@githubp.com](mailto:info@githubp.com "info@githubp.com"). 
