@@ -107,7 +107,7 @@ p {
 
 .recent-url:hover {
     cursor: pointer;
-    transform: scale(1.02);
+    font-weight: bolder;
 }
 
 .green {
