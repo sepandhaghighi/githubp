@@ -37,9 +37,10 @@ function parseGithubPath(path) {
 }
 
 function saveRecent(url) {
+  let lastVisit = new Date().toGMTString()
   let recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
-  recent = recent.filter(item => !(item===url));
-  recent.unshift(url);
+  recent = recent.filter(item => !(item.url===url));
+  recent.unshift({url, lastVisit});
   if(recent.length > recentSize) recent = recent.slice(0, recentSize);
   localStorage.setItem(recentKey, JSON.stringify(recent));
 }
@@ -54,7 +55,7 @@ function renderRecent(){
     const spanUrl = document.createElement("span");
     const spanRemove = document.createElement("span");
     const spanLastVisit = document.createElement("span");
-    spanUrl.textContent = item;
+    spanUrl.textContent = item.url;
     spanUrl.className = "recent-url";
     spanRemove.textContent = "🗑️";
     spanRemove.className = "recent-remove";
@@ -73,7 +74,7 @@ function renderRecent(){
       const userConfirmed = confirm("Are you sure you want to remove this page?");
       if (userConfirmed){
         let newRecent = JSON.parse(localStorage.getItem(recentKey) || "[]");
-        newRecent = newRecent.filter(recentItem => !(recentItem===item));
+        newRecent = newRecent.filter(recentItem => !(recentItem.url===item.url));
         localStorage.setItem(recentKey, JSON.stringify(newRecent));
         renderRecent();
       }
