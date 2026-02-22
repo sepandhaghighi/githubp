@@ -66,8 +66,8 @@ function renderRecent(){
       spanLastVisit.textContent = new Date(item.lastVisit).toLocaleDateString();
     }
     spanUrl.addEventListener("click", () => {
-      saveRecent(item);
-      redirectToGithubPages(item);
+      saveRecent(item.url);
+      redirectToGithubPages(item.url);
     });
 
   spanRemove.addEventListener("click", ()=>{
