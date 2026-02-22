@@ -2,6 +2,26 @@ const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
 const recentKey = "recentPages";
 const recentSize = 15;
 
+function migrateRecentData() {
+    const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+    if (!recent) return;
+
+
+    if (Array.isArray(recent) && recent.length > 0 && typeof recent[0] === "object" && recent[0].lastVisit) {
+        return;
+    }
+
+    if (Array.isArray(recent) && recent.every(item => typeof item === "string")) {
+        const migratedData = recent.map(url => ({
+            url,
+            lastVisit: new Date().toGMTString()
+        }));
+
+        localStorage.setItem(recentKey, JSON.stringify(migratedData));
+        console.log("LocalStorage data migrated to new format.");
+    }
+}
+
 function isValidGithubName(name) {
   return GITHUB_NAME_PATTERN.test(name);
 }
@@ -37,14 +57,16 @@ function parseGithubPath(path) {
 }
 
 function saveRecent(url) {
+  let lastVisit = new Date().toGMTString()
   let recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
-  recent = recent.filter(item => !(item===url));
-  recent.unshift(url);
+  recent = recent.filter(item => !(item.url===url));
+  recent.unshift({url, lastVisit});
   if(recent.length > recentSize) recent = recent.slice(0, recentSize);
   localStorage.setItem(recentKey, JSON.stringify(recent));
 }
 
 function renderRecent(){
+  const nowDate = new Date();
   const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
@@ -52,26 +74,34 @@ function renderRecent(){
     const li = document.createElement("li");
     const spanUrl = document.createElement("span");
     const spanRemove = document.createElement("span");
-    spanUrl.textContent = item;
+    const spanLastVisit = document.createElement("span");
+    spanUrl.textContent = item.url;
     spanUrl.className = "recent-url";
     spanRemove.textContent = "🗑️";
     spanRemove.className = "recent-remove";
+    if (nowDate.toLocaleDateString() === new Date(item.lastVisit).toLocaleDateString()) {
+      spanLastVisit.textContent = new Date(item.lastVisit).toLocaleTimeString();
+    }
+    else {
+      spanLastVisit.textContent = new Date(item.lastVisit).toLocaleDateString();
+    }
     spanUrl.addEventListener("click", () => {
-      saveRecent(item);
-      redirectToGithubPages(item);
+      saveRecent(item.url);
+      redirectToGithubPages(item.url);
     });
 
   spanRemove.addEventListener("click", ()=>{
       const userConfirmed = confirm("Are you sure you want to remove this page?");
       if (userConfirmed){
         let newRecent = JSON.parse(localStorage.getItem(recentKey) || "[]");
-        newRecent = newRecent.filter(recentItem => !(recentItem===item));
+        newRecent = newRecent.filter(recentItem => !(recentItem.url===item.url));
         localStorage.setItem(recentKey, JSON.stringify(newRecent));
         renderRecent();
       }
     });
     li.appendChild(spanRemove);
     li.appendChild(spanUrl);
+    li.appendChild(spanLastVisit);
     recentItems.appendChild(li);
   });
   document.getElementById("recent-list").style.display = recent.length ? "block" : "none";
