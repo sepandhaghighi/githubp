@@ -2,6 +2,26 @@ const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
 const recentKey = "recentPages";
 const recentSize = 15;
 
+function migrateRecentData() {
+    const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+    if (!recent) return;
+
+
+    if (Array.isArray(recent) && recent.length > 0 && typeof recent[0] === "object" && recent[0].lastVisit) {
+        return;
+    }
+
+    if (Array.isArray(recent) && recent.every(item => typeof item === "string")) {
+        const migratedData = recent.map(url => ({
+            url,
+            lastVisit: new Date().toGMTString()
+        }));
+
+        localStorage.setItem(recentKey, JSON.stringify(migratedData));
+        console.log("LocalStorage data migrated to new format.");
+    }
+}
+
 function isValidGithubName(name) {
   return GITHUB_NAME_PATTERN.test(name);
 }
