@@ -80,7 +80,7 @@ function renderRecent(){
   const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
-  recent.forEach(item=>{
+  recent.forEach(item => {
     const li = document.createElement("li");
     const spanUrl = document.createElement("span");
     const spanRemove = document.createElement("span");
@@ -100,7 +100,7 @@ function renderRecent(){
       redirectToGithubPages(item.url);
     });
 
-  spanRemove.addEventListener("click", ()=>{
+    spanRemove.addEventListener("click", () => {
       removeRecent(item.url);
     });
     li.appendChild(spanRemove);
