@@ -65,12 +65,22 @@ function saveRecent(url) {
   localStorage.setItem(recentKey, JSON.stringify(recent));
 }
 
+function removeRecent(url) {
+  const userConfirmed = confirm("Are you sure you want to remove this page?");
+  if (userConfirmed) {
+    let recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+    recent = recent.filter(item => !(item.url===url));
+    localStorage.setItem(recentKey, JSON.stringify(recent));
+    renderRecent();
+  }
+}
+
 function renderRecent(){
   const nowDate = new Date();
   const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
-  recent.forEach(item=>{
+  recent.forEach(item => {
     const li = document.createElement("li");
     const spanUrl = document.createElement("span");
     const spanRemove = document.createElement("span");
@@ -90,14 +100,8 @@ function renderRecent(){
       redirectToGithubPages(item.url);
     });
 
-  spanRemove.addEventListener("click", ()=>{
-      const userConfirmed = confirm("Are you sure you want to remove this page?");
-      if (userConfirmed){
-        let newRecent = JSON.parse(localStorage.getItem(recentKey) || "[]");
-        newRecent = newRecent.filter(recentItem => !(recentItem.url===item.url));
-        localStorage.setItem(recentKey, JSON.stringify(newRecent));
-        renderRecent();
-      }
+    spanRemove.addEventListener("click", () => {
+      removeRecent(item.url);
     });
     li.appendChild(spanRemove);
     li.appendChild(spanUrl);
