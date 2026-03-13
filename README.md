@@ -32,12 +32,12 @@ GitHubP is a one-letter shortcut that instantly redirects GitHub URLs to their c
 
 ## Local Development
 
-To test GitHubP locally, you can use the provided `serve.py` script. It runs a minimal HTTP server using Python's standard library. No external dependencies are required.
+To test GitHubP locally, you can use [Ghps](https://github.com/sepandhaghighi/ghps) a minimal GitHub Pages simulator written in pure Python.
 
 Run:
 
 ```console
-python serve.py
+ghps --port 8080
 ```
 
 Then open your browser and visit:
