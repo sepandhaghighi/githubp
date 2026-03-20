@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `removeRecent` function
 ### Changed
 - `README.md` updated
+- `404.html` path bug fixed
 ## [0.3] - 2026-02-09
 ### Added
 - Recently visited section
