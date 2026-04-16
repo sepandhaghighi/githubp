@@ -6,6 +6,10 @@ function getRecent() {
   return JSON.parse(localStorage.getItem(recentKey) || "[]");
 }
 
+function setRecent(data) {
+  localStorage.setItem(recentKey, JSON.stringify(data));
+}
+
 function migrateRecentData() {
     const recent = getRecent();
     if (!recent) return;
@@ -21,7 +25,7 @@ function migrateRecentData() {
             lastVisit: new Date().toGMTString()
         }));
 
-        localStorage.setItem(recentKey, JSON.stringify(migratedData));
+        setRecent(migratedData);
         console.log("LocalStorage data migrated to new format.");
     }
 }
@@ -66,7 +70,7 @@ function saveRecent(url) {
   recent = recent.filter(item => !(item.url===url));
   recent.unshift({url, lastVisit});
   if(recent.length > recentSize) recent = recent.slice(0, recentSize);
-  localStorage.setItem(recentKey, JSON.stringify(recent));
+  setRecent(recent);
 }
 
 function removeRecent(url) {
@@ -74,7 +78,7 @@ function removeRecent(url) {
   if (userConfirmed) {
     let recent = getRecent();
     recent = recent.filter(item => !(item.url===url));
-    localStorage.setItem(recentKey, JSON.stringify(recent));
+    setRecent(recent);
     renderRecent();
   }
 }
