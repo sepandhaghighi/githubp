@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `getRecent` function
+- `setRecent` function
 ## [0.4] - 2026-03-22
 ### Added
 - Last visit date

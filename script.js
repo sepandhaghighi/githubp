@@ -2,8 +2,16 @@ const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
 const recentKey = "recentPages";
 const recentSize = 15;
 
+function getRecent() {
+  return JSON.parse(localStorage.getItem(recentKey) || "[]");
+}
+
+function setRecent(data) {
+  localStorage.setItem(recentKey, JSON.stringify(data));
+}
+
 function migrateRecentData() {
-    const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+    const recent = getRecent();
     if (!recent) return;
 
 
@@ -17,7 +25,7 @@ function migrateRecentData() {
             lastVisit: new Date().toGMTString()
         }));
 
-        localStorage.setItem(recentKey, JSON.stringify(migratedData));
+        setRecent(migratedData);
         console.log("LocalStorage data migrated to new format.");
     }
 }
@@ -58,26 +66,26 @@ function parseGithubPath(path) {
 
 function saveRecent(url) {
   let lastVisit = new Date().toGMTString()
-  let recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+  let recent = getRecent();
   recent = recent.filter(item => !(item.url===url));
   recent.unshift({url, lastVisit});
   if(recent.length > recentSize) recent = recent.slice(0, recentSize);
-  localStorage.setItem(recentKey, JSON.stringify(recent));
+  setRecent(recent);
 }
 
 function removeRecent(url) {
   const userConfirmed = confirm("Are you sure you want to remove this page?");
   if (userConfirmed) {
-    let recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+    let recent = getRecent();
     recent = recent.filter(item => !(item.url===url));
-    localStorage.setItem(recentKey, JSON.stringify(recent));
+    setRecent(recent);
     renderRecent();
   }
 }
 
 function renderRecent(){
   const nowDate = new Date();
-  const recent = JSON.parse(localStorage.getItem(recentKey) || "[]");
+  const recent = getRecent();
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
   recent.forEach(item => {
