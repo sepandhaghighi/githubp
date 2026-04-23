@@ -105,6 +105,18 @@ function createRecentItem(item, maxLimit) {
   return { li, spanRemove, spanUrl, spanLastVisit};
 }
 
+function attachRecentEvents(li, item, spanRemove, spanUrl) {
+  spanUrl.addEventListener("click", () => {
+    saveRecent(item.url);
+    redirectToGithubPages(item.url);
+  });
+
+  spanRemove.addEventListener("click", () => {
+    removeRecent(item.url);
+  });
+
+}
+
 function renderRecent(){
   const nowDate = new Date();
   const recent = getRecent();
@@ -112,14 +124,9 @@ function renderRecent(){
   recentItems.innerHTML = "";
   recent.forEach(item => {
     
-    spanUrl.addEventListener("click", () => {
-      saveRecent(item.url);
-      redirectToGithubPages(item.url);
-    });
+    
 
-    spanRemove.addEventListener("click", () => {
-      removeRecent(item.url);
-    });
+    
     
     recentItems.appendChild(li);
   });
