@@ -114,7 +114,6 @@ function attachRecentEvents(li, item, spanRemove, spanUrl) {
   spanRemove.addEventListener("click", () => {
     removeRecent(item.url);
   });
-
 }
 
 function renderRecent(){
@@ -123,11 +122,8 @@ function renderRecent(){
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
   recent.forEach(item => {
-    
-    
-
-    
-    
+    const { li, spanRemove, spanUrl, spanLastVisit} = createRecentItem(item);
+    attachRecentEvents(li, item, spanRemove, spanUrl);
     recentItems.appendChild(li);
   });
   document.getElementById("recent-list").style.display = recent.length ? "block" : "none";
