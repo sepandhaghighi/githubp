@@ -103,7 +103,7 @@ function createRecentItem(item) {
   li.appendChild(spanUrl);
   li.appendChild(spanLastVisit);
 
-  return { li, spanRemove, spanUrl, spanLastVisit};
+  return { li, spanRemove, spanUrl};
 }
 
 function attachRecentEvents(li, item, spanRemove, spanUrl) {
@@ -122,7 +122,7 @@ function renderRecent(){
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
   recent.forEach(item => {
-    const { li, spanRemove, spanUrl, spanLastVisit} = createRecentItem(item);
+    const { li, spanRemove, spanUrl} = createRecentItem(item);
     attachRecentEvents(li, item, spanRemove, spanUrl);
     recentItems.appendChild(li);
   });
