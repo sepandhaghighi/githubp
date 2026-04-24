@@ -83,7 +83,8 @@ function removeRecent(url) {
   }
 }
 
-function createRecentItem(item, maxLimit) {
+function createRecentItem(item) {
+  const nowDate = new Date();
   const li = document.createElement("li");
   const spanUrl = document.createElement("span");
   const spanRemove = document.createElement("span");
@@ -117,7 +118,6 @@ function attachRecentEvents(li, item, spanRemove, spanUrl) {
 }
 
 function renderRecent(){
-  const nowDate = new Date();
   const recent = getRecent();
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
