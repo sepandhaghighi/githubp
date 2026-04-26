@@ -106,7 +106,7 @@ function createRecentItem(item) {
   return { li, spanRemove, spanUrl};
 }
 
-function attachRecentEvents(li, item, spanRemove, spanUrl) {
+function attachRecentEvents(item, spanRemove, spanUrl) {
   spanUrl.addEventListener("click", () => {
     saveRecent(item.url);
     redirectToGithubPages(item.url);
@@ -123,7 +123,7 @@ function renderRecent(){
   recentItems.innerHTML = "";
   recent.forEach(item => {
     const { li, spanRemove, spanUrl} = createRecentItem(item);
-    attachRecentEvents(li, item, spanRemove, spanUrl);
+    attachRecentEvents(item, spanRemove, spanUrl);
     recentItems.appendChild(li);
   });
   document.getElementById("recent-list").style.display = recent.length ? "block" : "none";
