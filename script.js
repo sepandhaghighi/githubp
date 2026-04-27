@@ -83,37 +83,47 @@ function removeRecent(url) {
   }
 }
 
-function renderRecent(){
+function createRecentItem(item) {
   const nowDate = new Date();
+  const li = document.createElement("li");
+  const spanUrl = document.createElement("span");
+  const spanRemove = document.createElement("span");
+  const spanLastVisit = document.createElement("span");
+  spanUrl.textContent = item.url;
+  spanUrl.className = "recent-url";
+  spanRemove.textContent = "🗑️";
+  spanRemove.className = "recent-remove";
+  if (nowDate.toLocaleDateString() === new Date(item.lastVisit).toLocaleDateString()) {
+    spanLastVisit.textContent = new Date(item.lastVisit).toLocaleTimeString();
+  }
+  else {
+    spanLastVisit.textContent = new Date(item.lastVisit).toLocaleDateString();
+  }
+  li.appendChild(spanRemove);
+  li.appendChild(spanUrl);
+  li.appendChild(spanLastVisit);
+
+  return { li, spanRemove, spanUrl};
+}
+
+function attachRecentEvents(item, spanRemove, spanUrl) {
+  spanUrl.addEventListener("click", () => {
+    saveRecent(item.url);
+    redirectToGithubPages(item.url);
+  });
+
+  spanRemove.addEventListener("click", () => {
+    removeRecent(item.url);
+  });
+}
+
+function renderRecent(){
   const recent = getRecent();
   const recentItems = document.getElementById("recent-items");
   recentItems.innerHTML = "";
   recent.forEach(item => {
-    const li = document.createElement("li");
-    const spanUrl = document.createElement("span");
-    const spanRemove = document.createElement("span");
-    const spanLastVisit = document.createElement("span");
-    spanUrl.textContent = item.url;
-    spanUrl.className = "recent-url";
-    spanRemove.textContent = "🗑️";
-    spanRemove.className = "recent-remove";
-    if (nowDate.toLocaleDateString() === new Date(item.lastVisit).toLocaleDateString()) {
-      spanLastVisit.textContent = new Date(item.lastVisit).toLocaleTimeString();
-    }
-    else {
-      spanLastVisit.textContent = new Date(item.lastVisit).toLocaleDateString();
-    }
-    spanUrl.addEventListener("click", () => {
-      saveRecent(item.url);
-      redirectToGithubPages(item.url);
-    });
-
-    spanRemove.addEventListener("click", () => {
-      removeRecent(item.url);
-    });
-    li.appendChild(spanRemove);
-    li.appendChild(spanUrl);
-    li.appendChild(spanLastVisit);
+    const { li, spanRemove, spanUrl} = createRecentItem(item);
+    attachRecentEvents(item, spanRemove, spanUrl);
     recentItems.appendChild(li);
   });
   document.getElementById("recent-list").style.display = recent.length ? "block" : "none";

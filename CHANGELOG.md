@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `getRecent` function
 - `setRecent` function
+### Changed
+- `renderRecent` function modified
 ## [0.4] - 2026-03-22
 ### Added
 - Last visit date
