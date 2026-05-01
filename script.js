@@ -15,6 +15,11 @@ const CONFIG = {
     BASE: "https://github.com",
     PAGES: "github.io"
   },
+
+  MESSAGES: {
+    INVALID_PATH: "Invalid GitHub path",
+    CONFIRM_REMOVE: "Are you sure you want to remove this page?"
+  }
 }
 
 function getRecent() {
@@ -89,7 +94,7 @@ function saveRecent(url) {
 }
 
 function removeRecent(url) {
-  const userConfirmed = confirm("Are you sure you want to remove this page?");
+  const userConfirmed = confirm(CONFIG.MESSAGES.CONFIRM_REMOVE);
   if (userConfirmed) {
     let recent = getRecent();
     recent = recent.filter(item => !(item.url===url));
@@ -156,7 +161,7 @@ function handleIndexPage() {
     const { username, repositoryName } = parseGithubPath(value);
 
     if (!username || !isValidGithubName(username)) {
-      alert("Invalid GitHub path");
+      alert(CONFIG.MESSAGES.INVALID_PATH);
       return;
     }
     const targetUrl = getTargetUrl(username, repositoryName);
@@ -169,7 +174,7 @@ function handleIndexPage() {
 function handle404Page() {
   const { username, repositoryName } = parseGithubPath(location.pathname);
   if (!username || !isValidGithubName(username)) {
-    alert("Invalid GitHub path");
+    alert(CONFIG.MESSAGES.INVALID_PATH);
     location.replace("/");
     return;
   }
