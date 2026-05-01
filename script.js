@@ -9,7 +9,12 @@ const CONFIG = {
 
   PATTERNS: {
     GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/
-  }
+  },
+
+  URLS: {
+    BASE: "https://github.com",
+    PAGES: "github.io"
+  },
 }
 
 function getRecent() {
@@ -46,8 +51,8 @@ function isValidGithubName(name) {
 
 function getTargetUrl(username, repositoryName) {
   const targetUrl = repositoryName
-    ? `https://${username}.github.io/${repositoryName}`
-    : `https://${username}.github.io`;
+    ? `https://${username}.${CONFIG.URLS.PAGES}/${repositoryName}`
+    : `https://${username}.${CONFIG.URLS.PAGES}`;
   return targetUrl;
 }
 
@@ -59,7 +64,7 @@ function parseGithubPath(path) {
   try {
     const url = path.startsWith("http")
       ? new URL(path)
-      : new URL(`https://github.com/${path.replace(/^\/+/, "")}`);
+      : new URL(`${CONFIG.URLS.BASE}/${path.replace(/^\/+/, "")}`);
 
     const segments = url.pathname.split("/").filter(Boolean);
     return {
