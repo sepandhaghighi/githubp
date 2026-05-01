@@ -5,12 +5,12 @@ const CONFIG = {
 
   LIMITS: {
     RECENT_SIZE: 15
+  },
+
+  PATTERNS: {
+    GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/
   }
 }
-
-
-
-const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
 
 function getRecent() {
   return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEYS.RECENT) || "[]");
@@ -41,7 +41,7 @@ function migrateRecentData() {
 }
 
 function isValidGithubName(name) {
-  return GITHUB_NAME_PATTERN.test(name);
+  return CONFIG.PATTERNS.GITHUB_NAME.test(name);
 }
 
 function getTargetUrl(username, repositoryName) {
