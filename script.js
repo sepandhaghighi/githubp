@@ -2,12 +2,15 @@ const CONFIG = {
   STORAGE_KEYS: {
     RECENT: "recentPages"
   },
+
+  LIMITS: {
+    RECENT_SIZE: 15
+  }
 }
 
 
 
 const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
-const recentSize = 15;
 
 function getRecent() {
   return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEYS.RECENT) || "[]");
@@ -76,7 +79,7 @@ function saveRecent(url) {
   let recent = getRecent();
   recent = recent.filter(item => !(item.url===url));
   recent.unshift({url, lastVisit});
-  if(recent.length > recentSize) recent = recent.slice(0, recentSize);
+  if(recent.length > CONFIG.LIMITS.RECENT_SIZE) recent = recent.slice(0, CONFIG.LIMITS.RECENT_SIZE);
   setRecent(recent);
 }
 
