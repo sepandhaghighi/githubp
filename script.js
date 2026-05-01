@@ -1,13 +1,20 @@
+const CONFIG = {
+  STORAGE_KEYS: {
+    RECENT: "recentPages"
+  },
+}
+
+
+
 const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
-const recentKey = "recentPages";
 const recentSize = 15;
 
 function getRecent() {
-  return JSON.parse(localStorage.getItem(recentKey) || "[]");
+  return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEYS.RECENT) || "[]");
 }
 
 function setRecent(data) {
-  localStorage.setItem(recentKey, JSON.stringify(data));
+  localStorage.setItem(CONFIG.STORAGE_KEYS.RECENT, JSON.stringify(data));
 }
 
 function migrateRecentData() {
