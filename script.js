@@ -1,13 +1,33 @@
-const GITHUB_NAME_PATTERN = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/;
-const recentKey = "recentPages";
-const recentSize = 15;
+const CONFIG = {
+  STORAGE_KEYS: {
+    RECENT: "recentPages"
+  },
+
+  LIMITS: {
+    RECENT_SIZE: 15
+  },
+
+  PATTERNS: {
+    GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/
+  },
+
+  URLS: {
+    BASE: "https://github.com",
+    PAGES: "github.io"
+  },
+
+  MESSAGES: {
+    INVALID_PATH: "Invalid GitHub path",
+    CONFIRM_REMOVE: "Are you sure you want to remove this page?"
+  }
+}
 
 function getRecent() {
-  return JSON.parse(localStorage.getItem(recentKey) || "[]");
+  return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEYS.RECENT) || "[]");
 }
 
 function setRecent(data) {
-  localStorage.setItem(recentKey, JSON.stringify(data));
+  localStorage.setItem(CONFIG.STORAGE_KEYS.RECENT, JSON.stringify(data));
 }
 
 function migrateRecentData() {
@@ -31,13 +51,13 @@ function migrateRecentData() {
 }
 
 function isValidGithubName(name) {
-  return GITHUB_NAME_PATTERN.test(name);
+  return CONFIG.PATTERNS.GITHUB_NAME.test(name);
 }
 
 function getTargetUrl(username, repositoryName) {
   const targetUrl = repositoryName
-    ? `https://${username}.github.io/${repositoryName}`
-    : `https://${username}.github.io`;
+    ? `https://${username}.${CONFIG.URLS.PAGES}/${repositoryName}`
+    : `https://${username}.${CONFIG.URLS.PAGES}`;
   return targetUrl;
 }
 
@@ -49,7 +69,7 @@ function parseGithubPath(path) {
   try {
     const url = path.startsWith("http")
       ? new URL(path)
-      : new URL(`https://github.com/${path.replace(/^\/+/, "")}`);
+      : new URL(`${CONFIG.URLS.BASE}/${path.replace(/^\/+/, "")}`);
 
     const segments = url.pathname.split("/").filter(Boolean);
     return {
@@ -69,12 +89,12 @@ function saveRecent(url) {
   let recent = getRecent();
   recent = recent.filter(item => !(item.url===url));
   recent.unshift({url, lastVisit});
-  if(recent.length > recentSize) recent = recent.slice(0, recentSize);
+  if(recent.length > CONFIG.LIMITS.RECENT_SIZE) recent = recent.slice(0, CONFIG.LIMITS.RECENT_SIZE);
   setRecent(recent);
 }
 
 function removeRecent(url) {
-  const userConfirmed = confirm("Are you sure you want to remove this page?");
+  const userConfirmed = confirm(CONFIG.MESSAGES.CONFIRM_REMOVE);
   if (userConfirmed) {
     let recent = getRecent();
     recent = recent.filter(item => !(item.url===url));
@@ -141,7 +161,7 @@ function handleIndexPage() {
     const { username, repositoryName } = parseGithubPath(value);
 
     if (!username || !isValidGithubName(username)) {
-      alert("Invalid GitHub path");
+      alert(CONFIG.MESSAGES.INVALID_PATH);
       return;
     }
     const targetUrl = getTargetUrl(username, repositoryName);
@@ -154,7 +174,7 @@ function handleIndexPage() {
 function handle404Page() {
   const { username, repositoryName } = parseGithubPath(location.pathname);
   if (!username || !isValidGithubName(username)) {
-    alert("Invalid GitHub path");
+    alert(CONFIG.MESSAGES.INVALID_PATH);
     location.replace("/");
     return;
   }
