@@ -22,6 +22,26 @@ const CONFIG = {
   }
 }
 
+function showError(message) {
+  return Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: message,
+    confirmButtonText: "OK"
+  });
+}
+
+function showConfirm(message) {
+  return Swal.fire({
+    icon: "warning",
+    title: "Confirm",
+    text: message,
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    cancelButtonText: "Cancel"
+  });
+}
+
 function getRecent() {
   return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEYS.RECENT) || "[]");
 }
