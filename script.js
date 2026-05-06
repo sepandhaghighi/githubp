@@ -181,7 +181,7 @@ function handleIndexPage() {
     const { username, repositoryName } = parseGithubPath(value);
 
     if (!username || !isValidGithubName(username)) {
-      alert(CONFIG.MESSAGES.INVALID_PATH);
+      showError(CONFIG.MESSAGES.INVALID_PATH);
       return;
     }
     const targetUrl = getTargetUrl(username, repositoryName);
@@ -194,8 +194,9 @@ function handleIndexPage() {
 function handle404Page() {
   const { username, repositoryName } = parseGithubPath(location.pathname);
   if (!username || !isValidGithubName(username)) {
-    alert(CONFIG.MESSAGES.INVALID_PATH);
-    location.replace("/");
+    showError(CONFIG.MESSAGES.INVALID_PATH).then(() => {
+      location.replace("/");
+    });
     return;
   }
   const targetUrl = getTargetUrl(username, repositoryName);
