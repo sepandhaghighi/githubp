@@ -114,13 +114,14 @@ function saveRecent(url) {
 }
 
 function removeRecent(url) {
-  const userConfirmed = confirm(CONFIG.MESSAGES.CONFIRM_REMOVE);
-  if (userConfirmed) {
-    let recent = getRecent();
-    recent = recent.filter(item => !(item.url===url));
-    setRecent(recent);
-    renderRecent();
-  }
+  showConfirm(CONFIG.MESSAGES.CONFIRM_REMOVE).then(result => {
+    if (result.isConfirmed) {
+      let recent = getRecent();
+      recent = recent.filter(item => !(item.url===url));
+      setRecent(recent);
+      renderRecent();
+    }
+  });
 }
 
 function createRecentItem(item) {
