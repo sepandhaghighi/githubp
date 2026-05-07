@@ -22,6 +22,26 @@ const CONFIG = {
   }
 }
 
+function showError(message) {
+  return Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: message,
+    confirmButtonText: "OK"
+  });
+}
+
+function showConfirm(message) {
+  return Swal.fire({
+    icon: "warning",
+    title: "Confirm",
+    text: message,
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    cancelButtonText: "Cancel"
+  });
+}
+
 function getRecent() {
   return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEYS.RECENT) || "[]");
 }
@@ -94,13 +114,14 @@ function saveRecent(url) {
 }
 
 function removeRecent(url) {
-  const userConfirmed = confirm(CONFIG.MESSAGES.CONFIRM_REMOVE);
-  if (userConfirmed) {
-    let recent = getRecent();
-    recent = recent.filter(item => !(item.url===url));
-    setRecent(recent);
-    renderRecent();
-  }
+  showConfirm(CONFIG.MESSAGES.CONFIRM_REMOVE).then(result => {
+    if (result.isConfirmed) {
+      let recent = getRecent();
+      recent = recent.filter(item => !(item.url===url));
+      setRecent(recent);
+      renderRecent();
+    }
+  });
 }
 
 function createRecentItem(item) {
@@ -161,7 +182,7 @@ function handleIndexPage() {
     const { username, repositoryName } = parseGithubPath(value);
 
     if (!username || !isValidGithubName(username)) {
-      alert(CONFIG.MESSAGES.INVALID_PATH);
+      showError(CONFIG.MESSAGES.INVALID_PATH);
       return;
     }
     const targetUrl = getTargetUrl(username, repositoryName);
@@ -174,8 +195,9 @@ function handleIndexPage() {
 function handle404Page() {
   const { username, repositoryName } = parseGithubPath(location.pathname);
   if (!username || !isValidGithubName(username)) {
-    alert(CONFIG.MESSAGES.INVALID_PATH);
-    location.replace("/");
+    showError(CONFIG.MESSAGES.INVALID_PATH).then(() => {
+      location.replace("/");
+    });
     return;
   }
   const targetUrl = getTargetUrl(username, repositoryName);

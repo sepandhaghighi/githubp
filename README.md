@@ -46,6 +46,10 @@ Then open your browser and visit:
 http://localhost:8000
 ```
 
+## Dependencies
+
+- [SweetAlert2](https://sweetalert2.github.io/) v11.26.24 - modern alert/confirm dialogs
+
 ## Issues & Bug Reports
 
 Just fill an issue and describe it. We'll check it ASAP! or send an email to [info@githubp.com](mailto:info@githubp.com "info@githubp.com"). 
