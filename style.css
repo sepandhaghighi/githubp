@@ -133,3 +133,8 @@ footer {
     color: #777;
     position:relative;
 }
+
+.icon {
+  width: 1.1rem;
+  pointer-events: none;
+}
