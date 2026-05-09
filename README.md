@@ -49,6 +49,7 @@ http://localhost:8000
 ## Dependencies
 
 - [SweetAlert2](https://sweetalert2.github.io/) v11.26.24 - modern alert/confirm dialogs
+- [Lucide](https://lucide.dev/icons/) v1 - icons
 
 ## Issues & Bug Reports
 
