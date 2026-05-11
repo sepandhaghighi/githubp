@@ -132,8 +132,12 @@ function createRecentItem(item) {
   const spanLastVisit = document.createElement("span");
   spanUrl.textContent = item.url;
   spanUrl.className = "recent-url";
-  spanRemove.textContent = "🗑️";
+  spanRemove.innerHTML = `<img src="assets/icons/trash.svg" alt="Remove" class="icon"></img>`;
   spanRemove.className = "recent-remove";
+  spanRemove.setAttribute("title", "Remove");
+  spanRemove.setAttribute("role", "button");
+  spanRemove.setAttribute("tabindex", "0");
+  spanRemove.setAttribute("aria-label", "Remove recent item");
   if (nowDate.toLocaleDateString() === new Date(item.lastVisit).toLocaleDateString()) {
     spanLastVisit.textContent = new Date(item.lastVisit).toLocaleTimeString();
   }

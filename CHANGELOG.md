@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `showConfirm` function
 ### Changed
 - `renderRecent` function modified
+- Icons updated
 - `README.md` updated
 ## [0.4] - 2026-03-22
 ### Added
