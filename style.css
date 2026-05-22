@@ -8,7 +8,7 @@ html {
     --githubp-border: #ddd;
     --githubp-border-soft: #eee;
     --githubp-soft: #f6f8fa;
-    --githubp-focus: rgba(98, 176, 57, 0.25);
+    --githubp-focus: rgb(98 176 57 / 25%);
 }
 
 body {
@@ -153,7 +153,7 @@ footer {
 }
 
 .githubp-swal-container.swal2-backdrop-show {
-    background: rgba(0, 0, 0, 0.28);
+    background: rgb(0 0 0 / 28%);
 }
 
 .swal2-popup.githubp-swal {
@@ -162,7 +162,7 @@ footer {
     border: 1px solid var(--githubp-border);
     border-radius: 0.5rem;
     background: #fff;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 20px 48px rgb(0 0 0 / 16%);
     color: var(--githubp-text);
     font-family: system-ui, sans-serif;
 }
@@ -250,7 +250,7 @@ footer {
     color: var(--githubp-text);
 }
 
-@media (max-width: 420px) {
+@media (width <= 420px) {
     .swal2-popup.githubp-swal {
         padding: 1.2rem 1rem 1rem;
     }
