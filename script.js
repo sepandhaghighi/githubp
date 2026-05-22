@@ -23,8 +23,9 @@ const CONFIG = {
 }
 
 function showError(message) {
-  return Swal.fire({
+  return showAlert({
     icon: "error",
+    iconColor: "#d73a49",
     title: "Error",
     text: message,
     confirmButtonText: "OK"
@@ -32,8 +33,9 @@ function showError(message) {
 }
 
 function showConfirm(message) {
-  return Swal.fire({
-    icon: "warning",
+  return showAlert({
+    icon: "question",
+    iconColor: "#62B039",
     title: "Confirm",
     text: message,
     showCancelButton: true,
