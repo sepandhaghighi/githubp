@@ -1,3 +1,16 @@
+html {
+    --githubp-accent: #62B039;
+    --githubp-accent-strong: #3f7d25;
+    --githubp-accent-strong-hover: #356b20;
+    --githubp-danger: #d73a49;
+    --githubp-text: #000;
+    --githubp-muted: #444;
+    --githubp-border: #ddd;
+    --githubp-border-soft: #eee;
+    --githubp-soft: #f6f8fa;
+    --githubp-focus: rgba(98, 176, 57, 0.25);
+}
+
 body {
     font-family: system-ui, sans-serif;
     margin: 0;
