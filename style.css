@@ -1,3 +1,16 @@
+html {
+    --githubp-accent: #62B039;
+    --githubp-accent-strong: #3f7d25;
+    --githubp-accent-strong-hover: #356b20;
+    --githubp-danger: #d73a49;
+    --githubp-text: #000;
+    --githubp-muted: #444;
+    --githubp-border: #ddd;
+    --githubp-border-soft: #eee;
+    --githubp-soft: #f6f8fa;
+    --githubp-focus: rgb(98 176 57 / 25%);
+}
+
 body {
     font-family: system-ui, sans-serif;
     margin: 0;
@@ -21,7 +34,7 @@ h1 {
 }
 
 p {
-    color: #444;
+    color: var(--githubp-muted);
     line-height: 1.5;
     margin-bottom: 1rem;
 }
@@ -32,7 +45,7 @@ p {
 
 .example {
     font-family: monospace;
-    background: #f6f8fa;
+    background: var(--githubp-soft);
     padding: 0.6rem;
     border-radius: 6px;
     font-size: 0.9rem;
@@ -52,7 +65,7 @@ p {
 }
 
 #recent-header {
-    color: #000;
+    color: var(--githubp-text);
     font-size: 1rem;
     margin-bottom: 0.5rem;
     font-weight: bolder;
@@ -63,14 +76,14 @@ p {
     padding: 0;
     margin: 0;
     background: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid var(--githubp-border);
     border-radius: 0.5rem;
     overflow: hidden;
 }
 
 #recent-list li {
     padding: 0.5rem 0.75rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--githubp-border-soft);
     font-size: 0.8rem;
     display: flex;
     justify-content: space-between;
@@ -111,7 +124,7 @@ p {
 }
 
 .green {
-    color: #62B039;
+    color: var(--githubp-accent);
 }
 
 input {
@@ -137,4 +150,112 @@ footer {
 .icon {
   width: 1.1rem;
   pointer-events: none;
+}
+
+.githubp-swal-container.swal2-backdrop-show {
+    background: rgb(0 0 0 / 28%);
+}
+
+.swal2-popup.githubp-swal {
+    width: min(100%, 24rem);
+    padding: 1.35rem 1.35rem 1.1rem;
+    border: 1px solid var(--githubp-border);
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: 0 20px 48px rgb(0 0 0 / 16%);
+    color: var(--githubp-text);
+    font-family: system-ui, sans-serif;
+}
+
+.githubp-swal-icon.swal2-icon {
+    margin: 0 auto 0.85rem;
+    transform: scale(0.82);
+}
+
+.githubp-swal-icon.swal2-error {
+    border-color: var(--githubp-danger);
+    color: var(--githubp-danger);
+}
+
+.githubp-swal-icon.swal2-error [class^="swal2-x-mark-line"] {
+    background-color: var(--githubp-danger);
+}
+
+.githubp-swal-icon.swal2-question {
+    border-color: var(--githubp-accent);
+    color: var(--githubp-accent);
+}
+
+.githubp-swal-title.swal2-title {
+    padding: 0;
+    color: var(--githubp-text);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.githubp-swal-text.swal2-html-container {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    color: var(--githubp-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.githubp-swal-actions.swal2-actions {
+    width: 100%;
+    margin: 1.25rem 0 0;
+    gap: 0.5rem;
+}
+
+.githubp-swal-button {
+    display: inline-flex;
+    min-width: 5.75rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0.7rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.githubp-swal-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--githubp-focus);
+}
+
+.githubp-swal-button-confirm {
+    border-color: var(--githubp-accent-strong);
+    background: var(--githubp-accent-strong);
+    color: #fff;
+}
+
+.githubp-swal-button-confirm:hover {
+    border-color: var(--githubp-accent-strong-hover);
+    background: var(--githubp-accent-strong-hover);
+}
+
+.githubp-swal-button-cancel {
+    border-color: var(--githubp-border);
+    background: #fff;
+    color: var(--githubp-muted);
+}
+
+.githubp-swal-button-cancel:hover {
+    background: var(--githubp-soft);
+    color: var(--githubp-text);
+}
+
+@media (width <= 420px) {
+    .swal2-popup.githubp-swal {
+        padding: 1.2rem 1rem 1rem;
+    }
+
+    .githubp-swal-button {
+        flex: 1;
+    }
 }

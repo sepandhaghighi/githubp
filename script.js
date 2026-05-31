@@ -22,9 +22,27 @@ const CONFIG = {
   }
 }
 
-function showError(message) {
+function showAlert(options) {
   return Swal.fire({
+    buttonsStyling: false,
+    customClass: {
+      container: "githubp-swal-container",
+      popup: "githubp-swal",
+      icon: "githubp-swal-icon",
+      title: "githubp-swal-title",
+      htmlContainer: "githubp-swal-text",
+      actions: "githubp-swal-actions",
+      confirmButton: "githubp-swal-button githubp-swal-button-confirm",
+      cancelButton: "githubp-swal-button githubp-swal-button-cancel"
+    },
+    ...options
+  });
+}
+
+function showError(message) {
+  return showAlert({
     icon: "error",
+    iconColor: "#d73a49",
     title: "Error",
     text: message,
     confirmButtonText: "OK"
@@ -32,8 +50,9 @@ function showError(message) {
 }
 
 function showConfirm(message) {
-  return Swal.fire({
-    icon: "warning",
+  return showAlert({
+    icon: "question",
+    iconColor: "#62B039",
     title: "Confirm",
     text: message,
     showCancelButton: true,
