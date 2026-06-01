@@ -135,7 +135,7 @@ function saveRecent(url) {
 }
 
 function removeRecent(url) {
-  showConfirm(CONFIG.MESSAGES.CONFIRM_REMOVE).then(result => {
+  Modal.confirm(CONFIG.MESSAGES.CONFIRM_REMOVE).then(result => {
     if (result.isConfirmed) {
       let recent = getRecent();
       recent = recent.filter(item => !(item.url===url));
@@ -207,7 +207,7 @@ function handleIndexPage() {
     const { username, repositoryName } = parseGithubPath(value);
 
     if (!username || !isValidGithubName(username)) {
-      showError(CONFIG.MESSAGES.INVALID_PATH);
+      Modal.error(CONFIG.MESSAGES.INVALID_PATH);
       return;
     }
     const targetUrl = getTargetUrl(username, repositoryName);
@@ -220,7 +220,7 @@ function handleIndexPage() {
 function handle404Page() {
   const { username, repositoryName } = parseGithubPath(location.pathname);
   if (!username || !isValidGithubName(username)) {
-    showError(CONFIG.MESSAGES.INVALID_PATH).then(() => {
+    Modal.error(CONFIG.MESSAGES.INVALID_PATH).then(() => {
       location.replace("/");
     });
     return;
