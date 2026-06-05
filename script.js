@@ -8,7 +8,8 @@ const CONFIG = {
   },
 
   PATTERNS: {
-    GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/
+    GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/,
+    REPOSITORY_NAME: /^[A-Za-z0-9._-]{1,100}$/
   },
 
   URLS: {
