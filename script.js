@@ -121,7 +121,7 @@ function parseGithubPath(path) {
     return {
       username: segments[0] || null,
       repositoryName:
-        segments.length >= 2 && isValidGithubName(segments[1])
+        segments.length >= 2 && isValidRepositoryName(segments[1])
           ? segments[1]
           : null
     };
