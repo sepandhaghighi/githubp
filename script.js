@@ -96,6 +96,10 @@ function isValidGithubName(name) {
   return CONFIG.PATTERNS.GITHUB_NAME.test(name);
 }
 
+function isValidRepositoryName(name) {
+  return CONFIG.PATTERNS.REPOSITORY_NAME.test(name);
+}
+
 function getTargetUrl(username, repositoryName) {
   const targetUrl = repositoryName
     ? `https://${username}.${CONFIG.URLS.PAGES}/${repositoryName}`
