@@ -15,8 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `getRecent` function
 - `setRecent` function
-- `showError` function 
-- `showConfirm` function
+- `Modal.fire` function
+- `Modal.error` function
+- `Modal.confirm` function
 ### Changed
 - `renderRecent` function modified
 - Icons updated
