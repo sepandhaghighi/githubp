@@ -8,7 +8,7 @@ const CONFIG = {
   },
 
   PATTERNS: {
-    GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/,
+    USERNAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/,
     REPOSITORY_NAME: /^[A-Za-z0-9._-]{1,100}$/
   },
 
@@ -92,8 +92,8 @@ function migrateRecentData() {
     }
 }
 
-function isValidGithubName(name) {
-  return CONFIG.PATTERNS.GITHUB_NAME.test(name);
+function isValidUserName(name) {
+  return CONFIG.PATTERNS.USERNAME.test(name);
 }
 
 function isValidRepositoryName(name) {
@@ -211,7 +211,7 @@ function handleIndexPage() {
     const value = path.value.trim();
     const { username, repositoryName } = parseGithubPath(value);
 
-    if (!username || !isValidGithubName(username)) {
+    if (!username || !isValidUserName(username)) {
       Modal.error(CONFIG.MESSAGES.INVALID_PATH);
       return;
     }
@@ -224,7 +224,7 @@ function handleIndexPage() {
 
 function handle404Page() {
   const { username, repositoryName } = parseGithubPath(location.pathname);
-  if (!username || !isValidGithubName(username)) {
+  if (!username || !isValidUserName(username)) {
     Modal.error(CONFIG.MESSAGES.INVALID_PATH).then(() => {
       location.replace("/");
     });
