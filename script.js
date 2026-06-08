@@ -8,7 +8,8 @@ const CONFIG = {
   },
 
   PATTERNS: {
-    GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/
+    GITHUB_NAME: /^(?!-)(?!.*--)[A-Za-z0-9-]{1,100}(?<!-)$/,
+    REPOSITORY_NAME: /^[A-Za-z0-9._-]{1,100}$/
   },
 
   URLS: {
@@ -95,6 +96,10 @@ function isValidGithubName(name) {
   return CONFIG.PATTERNS.GITHUB_NAME.test(name);
 }
 
+function isValidRepositoryName(name) {
+  return CONFIG.PATTERNS.REPOSITORY_NAME.test(name);
+}
+
 function getTargetUrl(username, repositoryName) {
   const targetUrl = repositoryName
     ? `https://${username}.${CONFIG.URLS.PAGES}/${repositoryName}`
@@ -116,7 +121,7 @@ function parseGithubPath(path) {
     return {
       username: segments[0] || null,
       repositoryName:
-        segments.length >= 2 && isValidGithubName(segments[1])
+        segments.length >= 2 && isValidRepositoryName(segments[1])
           ? segments[1]
           : null
     };
