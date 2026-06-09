@@ -10,12 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Repository name bug fixed
 - `parseGithubPath` function modified
+- `isValidGithubName` function renamed to `isValidUserName`
 ## [0.5] - 2026-06-04
 ### Added
 - `getRecent` function
 - `setRecent` function
-- `showError` function 
-- `showConfirm` function
+- `Modal.fire` function
+- `Modal.error` function
+- `Modal.confirm` function
 ### Changed
 - `renderRecent` function modified
 - Icons updated
