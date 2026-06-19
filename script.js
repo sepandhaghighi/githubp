@@ -130,7 +130,7 @@ function parseGithubPath(path) {
   }
 }
 
-function redirectFromPath(path) {
+function submitPath(path) {
   const { username, repositoryName } = parseGithubPath(path);
 
   if (!username || !isValidUserName(username)) {
@@ -221,7 +221,7 @@ function handleIndexPage() {
   if (!path || !button) return;
 
   button.addEventListener("click", () => {
-    if (!redirectFromPath(path.value.trim())) {
+    if (!submitPath(path.value.trim())) {
       Modal.error(CONFIG.MESSAGES.INVALID_PATH);
     }
   });
@@ -229,7 +229,7 @@ function handleIndexPage() {
 
 
 function handle404Page() {
-  if (!redirectFromPath(location.pathname)) {
+  if (!submitPath(location.pathname)) {
     Modal.error(CONFIG.MESSAGES.INVALID_PATH).then(() => {
       location.replace("/");
     });
