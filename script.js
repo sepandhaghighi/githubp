@@ -229,15 +229,10 @@ function handleIndexPage() {
 
 
 function handle404Page() {
-  const { username, repositoryName } = parseGithubPath(location.pathname);
-  if (!username || !isValidUserName(username)) {
+  if (!redirectFromPath(location.pathname)) {
     Modal.error(CONFIG.MESSAGES.INVALID_PATH).then(() => {
       location.replace("/");
     });
-    return;
   }
-  const targetUrl = getTargetUrl(username, repositoryName);
-  saveRecent(targetUrl);
-  redirectToGithubPages(targetUrl);
 }
 
