@@ -130,6 +130,19 @@ function parseGithubPath(path) {
   }
 }
 
+function redirectFromPath(path) {
+  const { username, repositoryName } = parseGithubPath(path);
+
+  if (!username || !isValidUserName(username)) {
+    return false;
+  }
+
+  const targetUrl = getTargetUrl(username, repositoryName);
+  saveRecent(targetUrl);
+  redirectToGithubPages(targetUrl);
+  return true;
+}
+
 function saveRecent(url) {
   let lastVisit = new Date().toGMTString()
   let recent = getRecent();
