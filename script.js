@@ -221,16 +221,9 @@ function handleIndexPage() {
   if (!path || !button) return;
 
   button.addEventListener("click", () => {
-    const value = path.value.trim();
-    const { username, repositoryName } = parseGithubPath(value);
-
-    if (!username || !isValidUserName(username)) {
+    if (!redirectFromPath(path.value.trim())) {
       Modal.error(CONFIG.MESSAGES.INVALID_PATH);
-      return;
     }
-    const targetUrl = getTargetUrl(username, repositoryName);
-    saveRecent(targetUrl);
-    redirectToGithubPages(targetUrl);
   });
 }
 
