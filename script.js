@@ -130,6 +130,19 @@ function parseGithubPath(path) {
   }
 }
 
+function submitPath(path) {
+  const { username, repositoryName } = parseGithubPath(path);
+
+  if (!username || !isValidUserName(username)) {
+    return false;
+  }
+
+  const targetUrl = getTargetUrl(username, repositoryName);
+  saveRecent(targetUrl);
+  redirectToGithubPages(targetUrl);
+  return true;
+}
+
 function saveRecent(url) {
   let lastVisit = new Date().toGMTString()
   let recent = getRecent();
@@ -208,30 +221,18 @@ function handleIndexPage() {
   if (!path || !button) return;
 
   button.addEventListener("click", () => {
-    const value = path.value.trim();
-    const { username, repositoryName } = parseGithubPath(value);
-
-    if (!username || !isValidUserName(username)) {
+    if (!submitPath(path.value.trim())) {
       Modal.error(CONFIG.MESSAGES.INVALID_PATH);
-      return;
     }
-    const targetUrl = getTargetUrl(username, repositoryName);
-    saveRecent(targetUrl);
-    redirectToGithubPages(targetUrl);
   });
 }
 
 
 function handle404Page() {
-  const { username, repositoryName } = parseGithubPath(location.pathname);
-  if (!username || !isValidUserName(username)) {
+  if (!submitPath(location.pathname)) {
     Modal.error(CONFIG.MESSAGES.INVALID_PATH).then(() => {
       location.replace("/");
     });
-    return;
   }
-  const targetUrl = getTargetUrl(username, repositoryName);
-  saveRecent(targetUrl);
-  redirectToGithubPages(targetUrl);
 }
 
