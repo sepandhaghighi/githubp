@@ -225,6 +225,13 @@ function handleIndexPage() {
       Modal.error(CONFIG.MESSAGES.INVALID_PATH);
     }
   });
+
+  path.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      button.click();
+    }
+  });
 }
 
 
