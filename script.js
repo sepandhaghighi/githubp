@@ -165,6 +165,7 @@ function removeRecent(url) {
 
 function createRecentItem(item) {
   const nowDate = new Date();
+  const lastVisitDate = new Date(item.lastVisit);
   const li = document.createElement("li");
   const spanUrl = document.createElement("span");
   const spanRemove = document.createElement("span");
@@ -177,11 +178,11 @@ function createRecentItem(item) {
   spanRemove.setAttribute("role", "button");
   spanRemove.setAttribute("tabindex", "0");
   spanRemove.setAttribute("aria-label", "Remove recent item");
-  if (nowDate.toLocaleDateString() === new Date(item.lastVisit).toLocaleDateString()) {
-    spanLastVisit.textContent = new Date(item.lastVisit).toLocaleTimeString();
+  if (nowDate.toLocaleDateString() === lastVisitDate.toLocaleDateString()) {
+    spanLastVisit.textContent = lastVisitDate.toLocaleTimeString();
   }
   else {
-    spanLastVisit.textContent = new Date(item.lastVisit).toLocaleDateString();
+    spanLastVisit.textContent = lastVisitDate.toLocaleDateString();
   }
   li.appendChild(spanRemove);
   li.appendChild(spanUrl);
