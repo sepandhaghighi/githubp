@@ -148,7 +148,7 @@ function submitPath(path) {
 }
 
 function saveRecent(url) {
-  let lastVisit = new getCurrentTimestamp()
+  let lastVisit = getCurrentTimestamp()
   let recent = getRecent();
   recent = recent.filter(item => !(item.url===url));
   recent.unshift({url, lastVisit});
