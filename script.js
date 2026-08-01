@@ -72,6 +72,10 @@ function setRecent(data) {
   localStorage.setItem(CONFIG.STORAGE_KEYS.RECENT, JSON.stringify(data));
 }
 
+function getCurrentTimestamp() {
+  return new Date().toGMTString()
+}
+
 function migrateRecentData() {
     const recent = getRecent();
     if (!recent) return;
