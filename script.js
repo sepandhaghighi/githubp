@@ -88,7 +88,7 @@ function migrateRecentData() {
     if (Array.isArray(recent) && recent.every(item => typeof item === "string")) {
         const migratedData = recent.map(url => ({
             url,
-            lastVisit: new Date().toGMTString()
+            lastVisit: getCurrentTimestamp()
         }));
 
         setRecent(migratedData);
@@ -148,7 +148,7 @@ function submitPath(path) {
 }
 
 function saveRecent(url) {
-  let lastVisit = new Date().toGMTString()
+  let lastVisit = new getCurrentTimestamp()
   let recent = getRecent();
   recent = recent.filter(item => !(item.url===url));
   recent.unshift({url, lastVisit});
