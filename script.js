@@ -72,6 +72,10 @@ function setRecent(data) {
   localStorage.setItem(CONFIG.STORAGE_KEYS.RECENT, JSON.stringify(data));
 }
 
+function getCurrentTimestamp() {
+  return new Date().toGMTString()
+}
+
 function migrateRecentData() {
     const recent = getRecent();
     if (!recent) return;
@@ -84,7 +88,7 @@ function migrateRecentData() {
     if (Array.isArray(recent) && recent.every(item => typeof item === "string")) {
         const migratedData = recent.map(url => ({
             url,
-            lastVisit: new Date().toGMTString()
+            lastVisit: getCurrentTimestamp()
         }));
 
         setRecent(migratedData);
@@ -144,7 +148,7 @@ function submitPath(path) {
 }
 
 function saveRecent(url) {
-  let lastVisit = new Date().toGMTString()
+  let lastVisit = getCurrentTimestamp()
   let recent = getRecent();
   recent = recent.filter(item => !(item.url===url));
   recent.unshift({url, lastVisit});
