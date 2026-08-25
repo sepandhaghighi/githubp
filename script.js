@@ -187,7 +187,7 @@ function createRecentItem(item) {
   const spanUrl = document.createElement("span");
   const spanRemove = document.createElement("span");
   const spanLastVisit = document.createElement("span");
-  spanUrl.textContent = item.url;
+  spanUrl.textContent = getDisplayName(item.url);
   spanUrl.className = "recent-url";
   spanRemove.innerHTML = `<img src="assets/icons/trash.svg" alt="Remove" class="icon"></img>`;
   spanRemove.className = "recent-remove";
