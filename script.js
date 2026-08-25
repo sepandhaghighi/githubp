@@ -111,6 +111,19 @@ function getTargetUrl(username, repositoryName) {
   return targetUrl;
 }
 
+function getDisplayName(url) {
+  try {
+    const parsedUrl = new URL(url);
+    const username = parsedUrl.hostname.replace(new RegExp(`\\.${CONFIG.URLS.PAGES}$`), "");
+
+    const repositoryName = parsedUrl.pathname.split("/").filter(Boolean)[0];
+
+    return repositoryName ? `${username}/${repositoryName}` : username;
+  } catch {
+    return url;
+  }
+}
+
 function redirectToGithubPages(url) {
   window.location.href = url;
 }
