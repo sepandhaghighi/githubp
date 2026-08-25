@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `getCurrentTimestamp` function
 - `isValidRepositoryName` function
 - `submitPath` function
+- `getDisplayName` function
 - `Enter` key shortcut
 ### Changed
 - Repository name bug fixed
+- Long name bug fixed
 - `parseGithubPath` function modified
 - `createRecentItem` function modified
 - `isValidGithubName` function renamed to `isValidUserName`
