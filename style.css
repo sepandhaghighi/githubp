@@ -101,6 +101,48 @@ p {
     background: #f2f2f2;
 }
 
+#remove-all {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--githubp-border);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--githubp-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#remove-all:hover {
+    background: var(--githubp-soft);
+    border-color: var(--githubp-accent);
+    color: var(--githubp-text);
+}
+
+#remove-all:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--githubp-focus);
+}
+
+#remove-all .icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+#remove-all:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .recent-remove {
     user-select: none;
     -webkit-user-select: none;
