@@ -19,7 +19,8 @@ const CONFIG = {
 
   MESSAGES: {
     INVALID_PATH: "Invalid GitHub path",
-    CONFIRM_REMOVE: "Are you sure you want to remove this page?"
+    CONFIRM_REMOVE: "Are you sure you want to remove this page?",
+    CONFIRM_REMOVE_ALL: "Are you sure you want to remove all recently visited pages?"
   }
 }
 
@@ -175,6 +176,15 @@ function removeRecent(url) {
       let recent = getRecent();
       recent = recent.filter(item => !(item.url===url));
       setRecent(recent);
+      renderRecent();
+    }
+  });
+}
+
+function removeAllRecent() {
+  Modal.confirm(CONFIG.MESSAGES.CONFIRM_REMOVE_ALL).then(result => {
+    if (result.isConfirmed) {
+      setRecent([]);
       renderRecent();
     }
   });
