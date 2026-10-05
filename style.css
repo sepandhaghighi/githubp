@@ -106,7 +106,8 @@ p {
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     padding: 0.55rem 0.85rem;
     border: 1px solid var(--githubp-border);
     border-radius: 6px;
