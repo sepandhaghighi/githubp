@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - `renderRecent` function modified
 - `handleIndexPage` function modified
+- Button style modified
+- Input style modified
+- Icons updated
 ## [0.6] - 2026-08-30
 ### Added
 - `getCurrentTimestamp` function
