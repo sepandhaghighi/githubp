@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Remove-all button
+- `removeAllRecent` function
+### Changed
+- `renderRecent` function modified
+- `handleIndexPage` function modified
 ## [0.6] - 2026-08-30
 ### Added
 - `getCurrentTimestamp` function
