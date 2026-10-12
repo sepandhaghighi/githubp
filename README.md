@@ -37,7 +37,7 @@ To test GitHubP locally, you can use [Ghps](https://github.com/sepandhaghighi/gh
 Run:
 
 ```console
-ghps --port 8000
+ghps --port=8000 --auto-open
 ```
 
 Then open your browser and visit:
