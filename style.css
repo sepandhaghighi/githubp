@@ -64,6 +64,13 @@ p {
     max-width: 600px;
 }
 
+#recent-list, #recent-list * {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 #recent-header {
     color: var(--githubp-text);
     font-size: 1rem;
