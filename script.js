@@ -246,11 +246,11 @@ function renderRecent(){
 function handleIndexPage() {
   renderRecent();
   const path = document.getElementById("path");
-  const button = document.getElementById("button");
+  const goButton = document.getElementById("go-button");
   const removeAllButton = document.getElementById("remove-all");
-  if (!path || !button) return;
+  if (!path || !goButton) return;
 
-  button.addEventListener("click", () => {
+  goButton.addEventListener("click", () => {
     if (!submitPath(path.value.trim())) {
       Modal.error(CONFIG.MESSAGES.INVALID_PATH);
     }
@@ -259,7 +259,7 @@ function handleIndexPage() {
   path.addEventListener("keydown", event => {
     if (event.key === "Enter") {
       event.preventDefault();
-      button.click();
+      goButton.click();
     }
   });
 

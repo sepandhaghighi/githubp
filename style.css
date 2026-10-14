@@ -151,7 +151,7 @@ p {
     cursor: not-allowed;
 }
 
-#button {
+#go-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -171,18 +171,18 @@ p {
         box-shadow 0.2s ease;
 }
 
-#button:hover {
+#go-button:hover {
     background: var(--githubp-soft);
     border-color: var(--githubp-accent);
     color: var(--githubp-text);
 }
 
-#button:focus-visible {
+#go-button:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--githubp-focus);
 }
 
-#button .icon {
+#go-button .icon {
     width: 1rem;
     height: 1rem;
 }
