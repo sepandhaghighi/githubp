@@ -239,7 +239,7 @@ function renderRecent(){
     recentItems.appendChild(li);
   });
   document.getElementById("recent-list").style.display = recent.length ? "block" : "none";
-  document.getElementById("remove-all").disabled = recent.length === 0;
+  document.getElementById("remove-all-button").disabled = recent.length === 0;
 }
 
 
@@ -247,7 +247,7 @@ function handleIndexPage() {
   renderRecent();
   const path = document.getElementById("path");
   const goButton = document.getElementById("go-button");
-  const removeAllButton = document.getElementById("remove-all");
+  const removeAllButton = document.getElementById("remove-all-button");
   if (!path || !goButton) return;
 
   goButton.addEventListener("click", () => {
