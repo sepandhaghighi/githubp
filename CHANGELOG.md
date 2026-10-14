@@ -12,7 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `renderRecent` function modified
 - `handleIndexPage` function modified
 - `Recently Visited` section text selection disabled
-- Button style modified
+- Go button style modified
+- Tags IDs refactored
 - Input style modified
 - Icons updated
 ## [0.6] - 2026-08-30
