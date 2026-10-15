@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `handleIndexPage` function modified
 - `Recently Visited` section text selection disabled
 - Go button style modified
-- Tags IDs refactored
+- Tags ID refactored
 - Input style modified
 - Icons updated
 ## [0.6] - 2026-08-30
