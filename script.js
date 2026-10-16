@@ -239,18 +239,18 @@ function renderRecent(){
     recentItems.appendChild(li);
   });
   document.getElementById("recent-list").style.display = recent.length ? "block" : "none";
-  document.getElementById("remove-all").disabled = recent.length === 0;
+  document.getElementById("remove-all-button").disabled = recent.length === 0;
 }
 
 
 function handleIndexPage() {
   renderRecent();
   const path = document.getElementById("path");
-  const button = document.getElementById("button");
-  const removeAllButton = document.getElementById("remove-all");
-  if (!path || !button) return;
+  const goButton = document.getElementById("go-button");
+  const removeAllButton = document.getElementById("remove-all-button");
+  if (!path || !goButton) return;
 
-  button.addEventListener("click", () => {
+  goButton.addEventListener("click", () => {
     if (!submitPath(path.value.trim())) {
       Modal.error(CONFIG.MESSAGES.INVALID_PATH);
     }
@@ -259,7 +259,7 @@ function handleIndexPage() {
   path.addEventListener("keydown", event => {
     if (event.key === "Enter") {
       event.preventDefault();
-      button.click();
+      goButton.click();
     }
   });
 
