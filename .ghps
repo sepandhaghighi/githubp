@@ -1,0 +1,7 @@
+directory = "."
+host = "localhost"
+port = 9002
+no_cache = true
+threaded = true
+auto_open = true
+quiet = false
